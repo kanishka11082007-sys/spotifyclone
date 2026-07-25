@@ -1,0 +1,100 @@
+console.log("hieeeee")
+let currentsong = new Audio();
+let currenttrack=""
+
+// Select these BEFORE using them
+let play = document.querySelector(".play");
+let playimg = document.querySelector(".playimg");
+async function getsongs() {
+    let a = await fetch("http://127.0.0.1:8080//songs/");
+    let response = await a.text();
+
+    let div = document.createElement("div");
+    div.innerHTML = response;
+
+    let as = div.getElementsByTagName("a");
+    let songs = [];
+
+    for (let i = 0; i < as.length; i++) {
+        const href = as[i].getAttribute("href");
+
+        if (href && href.endsWith(".mp3")) {
+            songs.push(decodeURIComponent(href.replace("./", "")));
+        }
+    }
+
+    return songs;
+}
+
+async function main(){
+    //get the list of all  songs
+    let songs= await getsongs()
+    console.log(songs) 
+    
+    //show all the songs in library
+    let songlib=document.querySelector(".songlib")
+    songlib.innerHTML=""; 
+
+    for (const song of songs) {
+
+    const cleanSong = song.replace(".mp3", "");
+    const parts = cleanSong.split(" - ");
+
+    const artist = parts[1];
+    const title = parts[0];
+
+    songlib.innerHTML += `
+        <div class="songcard" data-song="${song}">
+            <img class="music" src="music.svg" alt="">
+
+            <div class="song-info">
+                <h4>${title}</h4>
+                <p>${artist}</p>
+            </div>
+
+            <button class="play hover-white">
+                <img class="playimg" src="playsong.svg" alt="">
+            </button>
+        </div>`;
+    }
+    //to play whichever song we click
+    document.querySelectorAll(".songcard").forEach(card =>{
+        card.addEventListener("click",()=>{
+            let songname=card.dataset.song;
+            currentsong.src=`songs/${songname}`;
+            currentsong.play();
+            playimg.src="pausesong.svg";
+            document.querySelector(".songinfo").innerHTML=
+            songname.replace(".mp3","");
+        })
+    })
+
+}
+main()
+//to play and pause the image
+play.addEventListener("click", () => {
+
+    console.log("play btn clicked !")
+    if (currentsong.paused) {
+        currentsong.play();
+        playimg.src = "pausesong.svg";
+    } else {
+        currentsong.pause();
+        playimg.src = "playsong.svg";
+    }
+
+});
+//to show time duration
+function formattime(second){
+    let mins=Math.floor(second/60)
+    let secs=Math.floor(second%60)
+    
+    if(mins<10)mins="0"+mins
+    if(secs<10)secs="0"+secs
+    return `${mins}:${secs}`
+}
+currentsong.addEventListener("timeupdate",()=>{
+    document.querySelector(".songtime").innerHTML=
+     `${formattime(currentsong.currentTime)}/${formattime(currentsong.duration)}`
+})
+formattime(currentsong.currentTime)

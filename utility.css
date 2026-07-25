@@ -1,0 +1,93 @@
+
+.flex{
+    display: flex;
+}
+.invert{
+    filter: invert(1);
+}
+.bg-black{
+    background-color: black;
+    color: azure;
+}
+.bg-gray{
+    background-color: #1f1f1f;
+}
+.bg-white{
+    background-color: white;
+    color: black;
+}
+.bg-darkgray{
+    background-color: #121212;
+}
+.allbtnwhite{
+    display: flex;
+    border-radius: 20px;
+    margin:2px;
+    padding:20px;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 12px;
+}
+.allbtngrey{
+    background-color: #1f1f1f;
+    color: white;
+    display: flex;
+    border-radius: 20px;
+    margin:2px;
+    padding:20px;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 12px;
+}
+.libcard{
+    margin: 2px;
+    padding: 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    width: 294px;
+}
+.bold{
+    font-weight: bold;
+}
+.playbtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    color: black;
+    position: absolute;
+    border: none;
+    top: 120px;
+    right: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.hover-white:hover{
+    background-color: white;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.hover-black:hover{
+    color: white;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.hover-underline:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.playbttn    {
+    border-radius: 50%;
+    background-color: #575656 ;
+    border: none;
+    width: 43px;
+    height: 33px;
+    align-items: center;
+    margin-top: -7px;
+
+}
+
+
