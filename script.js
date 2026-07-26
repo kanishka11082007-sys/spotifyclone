@@ -1,10 +1,20 @@
 console.log("hieeeee")
 let currentsong = new Audio();
-let currenttrack=""
-
+let currentTrack=""
+let songs=[]
 // Select these BEFORE using them
 let play = document.querySelector(".play");
 let playimg = document.querySelector(".playimg");
+function playMusic(songname) {
+    currentTrack=songname
+    currentsong.src = `songs/${songname}`;
+    currentsong.play();
+
+    playimg.src = "pausesong.svg";
+
+    document.querySelector(".songinfo").innerHTML =
+        songname.replace(".mp3", "");
+}
 async function getsongs() {
     let a = await fetch("http://127.0.0.1:8080//songs/");
     let response = await a.text();
@@ -28,7 +38,7 @@ async function getsongs() {
 
 async function main(){
     //get the list of all  songs
-    let songs= await getsongs()
+     songs= await getsongs()
     console.log(songs) 
     
     //show all the songs in library
@@ -58,21 +68,23 @@ async function main(){
         </div>`;
     }
     //to play whichever song we click
-    document.querySelectorAll(".songcard").forEach(card =>{
-        card.addEventListener("click",()=>{
-            let songname=card.dataset.song;
-            currentsong.src=`songs/${songname}`;
-            currentsong.play();
-            playimg.src="pausesong.svg";
-            document.querySelector(".songinfo").innerHTML=
-            songname.replace(".mp3","");
-        })
-    })
+    document.querySelectorAll(".songcard").forEach(card => {
+    card.addEventListener("click", () => {
+        playMusic(card.dataset.song);
+    });
+});
 
 }
 main()
 //to play and pause the image
 play.addEventListener("click", () => {
+
+    // If no song is loaded yet, play the first song
+    if (currentsong.src === "") {
+        playMusic(document.querySelector(".songcard").dataset.song);
+        return;
+    }
+
     if (currentsong.paused) {
         currentsong.play();
         playimg.src = "pausesong.svg";
@@ -109,3 +121,25 @@ seekbar.addEventListener("click",(e)=>{
 
          currentsong.currentTime = (currentsong.duration * percent) / 100;
     })
+let nxtbtn=document.querySelector(".nextsong")
+nxtbtn.addEventListener("click",()=>{
+    let index=songs.indexOf(currentTrack)
+    if(index==songs.length-1){
+        index=0
+        playMusic(songs[index])
+    }
+    else{
+        playMusic(songs[index+1])
+    }
+})
+let prevbtn=document.querySelector(".prevsong")
+prevbtn.addEventListener("click",()=>{
+    let index=songs.indexOf(currentTrack)
+    if(index==0){
+        index=songs.length-1
+        playMusic(songs[index])
+    }
+    else{
+        playMusic(songs[index-1])
+    }
+})
