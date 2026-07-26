@@ -73,8 +73,6 @@ async function main(){
 main()
 //to play and pause the image
 play.addEventListener("click", () => {
-
-    console.log("play btn clicked !")
     if (currentsong.paused) {
         currentsong.play();
         playimg.src = "pausesong.svg";
@@ -98,3 +96,16 @@ currentsong.addEventListener("timeupdate",()=>{
      `${formattime(currentsong.currentTime)}/${formattime(currentsong.duration)}`
 })
 formattime(currentsong.currentTime)
+//circle of seekbar move
+currentsong.addEventListener("timeupdate",()=>{
+    let percent=(currentsong.currentTime/currentsong.duration)*100;
+    document.querySelector(".circle").style.left=percent+"%";
+})
+let seekbar = document.querySelector(".seekbar");
+seekbar.addEventListener("click",(e)=>{
+         let percent = (e.offsetX / seekbar.getBoundingClientRect().width) * 100;
+         console.log("working!!")
+         document.querySelector(".circle").style.left = percent + "%";
+
+         currentsong.currentTime = (currentsong.duration * percent) / 100;
+    })
