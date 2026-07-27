@@ -79,6 +79,7 @@ main()
 //to play and pause the image
 play.addEventListener("click", () => {
 
+
     // If no song is loaded yet, play the first song
     if (currentsong.src === "") {
         playMusic(document.querySelector(".songcard").dataset.song);
@@ -107,12 +108,17 @@ currentsong.addEventListener("timeupdate",()=>{
     document.querySelector(".songtime").innerHTML=
      `${formattime(currentsong.currentTime)}/${formattime(currentsong.duration)}`
 })
+currentsong.addEventListener("ended", () => {
+    nextsong()
+
+});
 formattime(currentsong.currentTime)
 //circle of seekbar move
 currentsong.addEventListener("timeupdate",()=>{
     let percent=(currentsong.currentTime/currentsong.duration)*100;
     document.querySelector(".circle").style.left=percent+"%";
 })
+//to shift seekbar btn
 let seekbar = document.querySelector(".seekbar");
 seekbar.addEventListener("click",(e)=>{
          let percent = (e.offsetX / seekbar.getBoundingClientRect().width) * 100;
@@ -121,17 +127,12 @@ seekbar.addEventListener("click",(e)=>{
 
          currentsong.currentTime = (currentsong.duration * percent) / 100;
     })
+//next btn feature
 let nxtbtn=document.querySelector(".nextsong")
 nxtbtn.addEventListener("click",()=>{
-    let index=songs.indexOf(currentTrack)
-    if(index==songs.length-1){
-        index=0
-        playMusic(songs[index])
-    }
-    else{
-        playMusic(songs[index+1])
-    }
+    nextsong()
 })
+//prev btn feature
 let prevbtn=document.querySelector(".prevsong")
 prevbtn.addEventListener("click",()=>{
     let index=songs.indexOf(currentTrack)
@@ -143,3 +144,18 @@ prevbtn.addEventListener("click",()=>{
         playMusic(songs[index-1])
     }
 })
+//next song function
+function nextsong(){
+    if(currentTrack===""){
+        return;
+    }
+    let index=songs.indexOf(currentTrack)
+    if(index==songs.length-1){
+        index=0
+        playMusic(songs[index])
+    }
+    else{
+        playMusic(songs[index+1])
+    }
+
+}
