@@ -1,4 +1,7 @@
-
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
 .container{
     display: flex;
     flex-direction: row;
@@ -28,7 +31,8 @@ body{
     border: 2px solid black;
     border-radius: 90px;
     padding: 3px;
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
 }
 .searchbox img{
     width: 30px;
@@ -50,16 +54,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 100px;;
     gap:20px;
     font-size: 10px;
-    width:655px;
-
 }
 .tleft{
     display: flex;
     gap:20px;
-    
+    flex: 1;
+    min-width: 0;
 }
 .install{
     display: flex;
@@ -82,7 +84,7 @@ input::placeholder{
 }
 
 .slidebar{
-    width: 336px;
+    width: 100%;
     padding: 11px;
     margin: 1px;
     height:240px;
@@ -93,11 +95,12 @@ input::placeholder{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 342px;
+    width: 100%;
     padding: 10px;
 }
 .left{
     width:360px;
+    flex-shrink: 0;
     color: white;
     height: 545px;
     border-radius: 15px;
@@ -134,7 +137,9 @@ a{
 .right{
     position: relative;
     border-radius: 15px;
-    width: 972px;
+    border: 2px solid red;
+    flex:1;
+    min-width: 0;
     height: 490px;
     gap: 20px;
 }
@@ -205,7 +210,9 @@ a{
     bottom: -56px;
     height:40px;
     padding: 5px;
-    width: 954px;
+    left:10px;
+    right:10px;
+    width: auto;
     border-radius: 11px;
 }
 .playbarbttn{
@@ -214,7 +221,7 @@ a{
     justify-content: center;
     align-items: center;
     margin-top: 5px;
-    margin-right: 250px;
+
 }
 .playbarbttn img{
     height: 30px;
@@ -269,11 +276,11 @@ a{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 60px;
+    
 }
 .songinfo{
+    flex: 1;
     color: #b3b3b3;
-    margin-left: 0px;
     background-color: #121212;
     width: 334px;
     font-size: 13px;
@@ -286,8 +293,47 @@ button{
     border-radius:15px;
 }
 .songtime{
+    flex: 1;
+    text-align: right;
     background-color: #121212;
     color: white;
     height: 20px;
     width: 95px;
+}
+.hamburger{
+    display: none;
+}
+@media (max-width: 1000px){
+
+    .tright h2,
+    .install{
+        display: none;
+    }
+
+    .searchbox{
+        max-width: 290px;
+    }
+}
+@media (max-width:700px){
+    .hamburger{
+        display: block;
+    }
+    .tright .divider,.signup{
+        display: none;
+    }
+    .tleft .logo,.home{
+        display: none;
+    }
+    .left{
+        position:fixed;
+        top: 0;
+        left: 100%;
+        width: 320px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+    .left.active{
+        left: 0;
+    }
 }
