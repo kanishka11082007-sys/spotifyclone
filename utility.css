@@ -1,7 +1,4 @@
 
-.flex{
-    display: flex;
-}
 .invert{
     filter: invert(1);
 }
