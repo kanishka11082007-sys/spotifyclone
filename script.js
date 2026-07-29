@@ -10,7 +10,7 @@ function playMusic(songname) {
     currentsong.src = `songs/${songname}`;
     currentsong.play();
 
-    playimg.src = "pausesong.svg";
+    playimg.src = "icons/pausesong.svg";
 
     document.querySelector(".songinfo").innerHTML =
         songname.replace(".mp3", "");
@@ -55,7 +55,7 @@ async function main(){
 
     songlib.innerHTML += `
         <div class="songcard" data-song="${song}">
-            <img class="music" src="music.svg" alt="">
+            <img class="music" src="icons/music.svg" alt="">
 
             <div class="song-info">
                 <h4>${title}</h4>
@@ -63,7 +63,7 @@ async function main(){
             </div>
 
             <button class="play hover-white">
-                <img class="playimg" src="playsong.svg" alt="">
+                <img class="playimg" src="icons/playsong.svg" alt="">
             </button>
         </div>`;
     }
@@ -88,10 +88,10 @@ play.addEventListener("click", () => {
 
     if (currentsong.paused) {
         currentsong.play();
-        playimg.src = "pausesong.svg";
+        playimg.src = "icons/pausesong.svg";
     } else {
         currentsong.pause();
-        playimg.src = "playsong.svg";
+        playimg.src = "icons/playsong.svg";
     }
 
 });
@@ -159,3 +159,20 @@ function nextsong(){
     }
 
 }
+const hamburger=document.querySelector(".hamburger")
+const sidebar=document.querySelector(".left")
+const closebtn=document.querySelector(".closebtn")
+const overlay=document.querySelector(".overlay")
+
+hamburger.addEventListener("click",()=>{
+    sidebar.classList.add("active");
+    overlay.classList.add("active")
+})
+closebtn.addEventListener("click",()=>{
+    sidebar.classList.remove("active")
+    overlay.classList.remove("active")
+})
+overlay.addEventListener("click",()=>{
+    sidebar.classList.remove("active")
+    overlay.classList.remove("active")
+})
