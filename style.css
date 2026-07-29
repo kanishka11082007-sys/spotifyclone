@@ -221,24 +221,23 @@ a{
     background-color: #1f1f1f;
     flex-shrink: 0;
     bottom: 16px;
-    left: 382px;
-    right: 12px;
-    height: 54px;
+    height: 64px;
     padding: 5px 4px;
     border-radius: 11px;
     z-index: 999;
 }
 .playbarbttn{
+    flex-shrink: 0;
     display: flex;
     gap:10px;
     justify-content: center;
     align-items: center;
     margin-top: 5px;
 
+
 }
 .playbarbttn img{
     height: 30px;
-    fill: aliceblue;
 }
 .seekbar{
     height: 3px;
@@ -295,9 +294,9 @@ a{
     flex: 1;
     color: #b3b3b3;
     background-color: #121212;
-    width: 334px;
+    min-width: 0;
     font-size: 13px;
-    font-weight: bolder;
+    border-radius:15px;
 }
 button{
     height:30px;
@@ -313,6 +312,18 @@ button{
     height: 20px;
     width: 95px;
 }
+.timevol{
+    flex: 1;
+    display: flex;
+    flex-direction: column;  
+
+    align-items: flex-end;
+    
+}
+.timevol img{
+    width: 15px;
+
+}
 .hamburger{
     display: none;
 }
@@ -323,11 +334,6 @@ button{
     display: none;
 }
 @media (max-width: 1400px){
-
-    .tright h2,
-    .install{
-        display: none;
-    }
 
     .searchbox{
         max-width: 290px;
@@ -341,7 +347,6 @@ button{
         overflow-y: auto;
     }
     .playbar{
-
         flex-shrink: 0;
     }
     .left{
@@ -366,7 +371,24 @@ button{
         flex-shrink:0;
     }
 }
-@media (max-width:700px){
+@media(max-width:1000px){
+     .tright h2,
+    .install{
+        display: none;
+    }
+    .songtime{
+        font-size: 15px;
+    }
+    .songinfo{
+        font-size: 10px;
+    }
+    .playbttn{
+        width:20px;
+        height: 20px;
+    }
+
+}
+@media (max-width:770px){
 
     .hamburger{
         display:block;
@@ -454,12 +476,6 @@ button{
     .card{
         width: 150px;
     }
-    .songtime{
-        font-size: 15px;
-    }
-    .playarbttn{
-        height:40px;
-    }
 }
 @media (max-width:460px){
     .searchbox{
@@ -483,5 +499,8 @@ button{
     }
     .songinfo{
         font-size: 10px;
+    }
+    .playbarbttn img{
+        width: 20px;
     }
 }
