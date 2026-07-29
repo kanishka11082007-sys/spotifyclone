@@ -8,12 +8,16 @@
     margin: 2px;
     padding: 2px;
     gap: 10px;
+    flex: 1;
+    min-height: 0;
 }
 body{
     font-family: "Inter";
     background-color: black;
+    height: 100dvh;
 }
 .top{
+    height: 64px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,12 +31,11 @@ body{
 .searchbox{
     display: flex;
     align-items: center;
-    padding: 8px 12px;
     border: 2px solid black;
     border-radius: 90px;
     padding: 3px;
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
 }
 .searchbox img{
     width: 30px;
@@ -84,25 +87,30 @@ input::placeholder{
 }
 
 .slidebar{
+    flex: 1;
+    overflow: auto;
+    min-height: 0;
     width: 100%;
     padding: 11px;
     margin: 1px;
-    height:240px;
     overflow-y: auto;
 }
 
 .library{
     display: flex;
     justify-content: space-between;
+    flex-shrink: 0;
     align-items: center;
     width: 100%;
     padding: 10px;
 }
 .left{
+    display: flex;
+    flex-direction: column;
     width:360px;
     flex-shrink: 0;
     color: white;
-    height: 545px;
+    height: 511px;
     border-radius: 15px;
 }
 .slidebar::-webkit-scrollbar {
@@ -125,6 +133,7 @@ input::placeholder{
     column-gap: 1px;
     font-size: 10px;
     row-gap: 15px;
+    flex-shrink: 0;
 }
 a{
     text-decoration: none;
@@ -132,16 +141,17 @@ a{
 }
 .lang{
     margin: 10px;
-    margin-top: 30px;
+    margin-top: 20px;
+    flex-shrink: 0;
 }
 .right{
-    position: relative;
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
-    border: 2px solid red;
+    background-color: black;
     flex:1;
     min-width: 0;
-    height: 490px;
-    gap: 20px;
+    gap: 10px;
 }
 .pcontainer::-webkit-scrollbar {
     width: 12px;
@@ -165,8 +175,10 @@ a{
     font-size: 20px;
 }
 .pcontainer{
-    height: 480px;
+    height: 435px;
+    background-color: #121212;
     overflow-y: scroll;
+    border-radius: 11px;
 }
 .card-container{
     display: flex;
@@ -206,14 +218,15 @@ a{
     transform: translateY(0) scale(1.08);
 }
 .playbar{
-    position:absolute;
-    bottom: -56px;
-    height:40px;
-    padding: 5px;
-    left:10px;
-    right:10px;
-    width: auto;
+    background-color: #1f1f1f;
+    flex-shrink: 0;
+    bottom: 16px;
+    left: 382px;
+    right: 12px;
+    height: 54px;
+    padding: 5px 4px;
     border-radius: 11px;
+    z-index: 999;
 }
 .playbarbttn{
     display: flex;
@@ -249,7 +262,7 @@ a{
 .songlib{
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: auto;
     gap: 10px;
 }
 .songcard{
@@ -303,7 +316,13 @@ button{
 .hamburger{
     display: none;
 }
-@media (max-width: 1000px){
+.closebtn{
+    display: none;
+}
+.overlay{
+    display: none;
+}
+@media (max-width: 1400px){
 
     .tright h2,
     .install{
@@ -313,27 +332,156 @@ button{
     .searchbox{
         max-width: 290px;
     }
-}
-@media (max-width:700px){
-    .hamburger{
-        display: block;
+    .right{
+        height: 90vh;
     }
-    .tright .divider,.signup{
-        display: none;
+    .pcontainer{
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
     }
-    .tleft .logo,.home{
-        display: none;
+    .playbar{
+
+        flex-shrink: 0;
     }
     .left{
-        position:fixed;
-        top: 0;
-        left: 100%;
-        width: 320px;
-        height: 100vh;
-        z-index: 1000;
-        transition: left 0.3s ease;
+        height:90vh;
     }
+
+    .library{
+        flex-shrink:0;
+    }
+
+    .slidebar{
+        flex:1;
+        min-height:0;
+        overflow-y:auto;
+    }
+
+    .footer{
+        flex-shrink:0;
+    }
+
+    .lang{
+        flex-shrink:0;
+    }
+}
+@media (max-width:700px){
+
+    .hamburger{
+        display:block;
+        margin-top: 8px;
+
+    }
+
+    .tright .divider,
+    .signup{
+        display:none;
+    }
+
+    .tleft .logo,
+    .home{
+        display:none;
+    }
+
+    .left{
+        position:fixed;
+        top:0;
+        left:-100%;
+        width:320px;
+        height:100vh;
+        z-index:1000;
+        transition:left 0.3s ease;
+        overflow:hidden;
+    }
+
     .left.active{
+        left:0;
+    }
+
+    .library{
+        flex-shrink:0;
+    }
+
+    .slidebar{
+        flex:1;
+        min-height:0;
+        overflow-y:auto;
+    }
+
+    .footer{
+        flex-shrink:0;
+    }
+
+    .lang{
+        flex-shrink:0;
+    }
+    .playbar{
         left: 0;
+    }
+    .closebtn{
+        display: block;
+        background: none;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin:10px;
+        width: 20px;
+    }
+    .overlay{
+        display: none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.5);
+        z-index:999;
+    }
+
+    .overlay.active{
+        display:block;
+    }
+    .right{
+        height: 90vh;
+    }
+    .pcontainer{
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+    }
+    .playbar{
+
+        flex-shrink: 0;
+    }
+    .card{
+        width: 150px;
+    }
+    .songtime{
+        font-size: 15px;
+    }
+    .playarbttn{
+        height:40px;
+    }
+}
+@media (max-width:460px){
+    .searchbox{
+        max-width: 200px;
+    }
+    .searchbox img{
+        width: 20px;
+    }
+    .searchboxinput{
+        width: 40px;
+        font-size: 6px;
+    }
+    .search{
+        width: 40px;
+    }
+    .card{
+        width: 120px;
+    }
+    .songtime{
+        font-size: 10px;
+    }
+    .songinfo{
+        font-size: 10px;
     }
 }
