@@ -122,7 +122,6 @@ currentsong.addEventListener("timeupdate",()=>{
 let seekbar = document.querySelector(".seekbar");
 seekbar.addEventListener("click",(e)=>{
          let percent = (e.offsetX / seekbar.getBoundingClientRect().width) * 100;
-         console.log("working!!")
          document.querySelector(".circle").style.left = percent + "%";
 
          currentsong.currentTime = (currentsong.duration * percent) / 100;
@@ -175,4 +174,36 @@ closebtn.addEventListener("click",()=>{
 overlay.addEventListener("click",()=>{
     sidebar.classList.remove("active")
     overlay.classList.remove("active")
+})
+//volume slider
+const volseekbar = document.querySelector(".volseekbar");
+const volseekcircle = document.querySelector(".volseekcircle");
+currentsong.volume = 1;
+volseekcircle.style.left = "100%";
+volseekbar.addEventListener("click",(e)=>{
+    const rect=volseekbar.getBoundingClientRect();
+    let percent=((e.clientX-rect.left)/rect.width)*100
+    
+    //prevent values below 0 and above 100
+    percent=Math.max(0,Math.min(100,percent))
+    volseekcircle.style.left=percent +"%"
+    currentsong.volume=percent/100
+    console.log(percent);
+    console.log(currentsong.volume);
+    
+})
+const volumeimg=document.querySelector(".volumeimg")
+let prevol=currentsong.volume
+volumeimg.addEventListener("click",()=>{
+    if(currentsong.muted==true){
+        volumeimg.src="icons/volume.svg"
+        prevol=currentsong.volume
+        currentsong.muted=false
+    }
+    else if(currentsong.muted==false){
+        volumeimg.src="icons/mute.svg"
+        prevol=0;
+        currentsong.muted=true
+    }
+
 })
