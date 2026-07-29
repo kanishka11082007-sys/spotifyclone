@@ -19,152 +19,177 @@
 <body>
     <div class="top bg-black">
         <div class="tleft ">
-            <img class="invert" src="logo.svg" alt="">
-            <img class="invert hover-black" src="home.svg" alt="">
+            <button class="hamburger hover-black bg-black">
+                <img class="invert " src="icons/menuicon.svg" alt="">
+            </button>
+            <img class="logo invert" src="icons/logo.svg" alt="">
+            <img class="home invert hover-black" src="icons/home.svg" alt="">
             <div class="searchbox bg-gray hover-black">
-                <img class="invert" src="search.svg" alt="search">
-                <input type="search" placeholder="What do you want to play?">
+                <img class="invert" src="icons/search.svg" alt="search">
+                <input class="search" placeholder="search songs">
                 <span class="divider">|</span>
-                <img class="invert hover-black" src="browse.svg" alt="" ">
+                <img class="invert hover-black" src="icons/browse.svg" alt="" ">
 
             </div>
         </div>
         <div class=" tright">
-            <h2>Premium</h2>
-            <h2>Support</h2>
-            <h2>Download</h2>
-            <span class="divider">|</span>
-            <div class="install hover-black">
-                <button class="install bg-black">
-                    <img class="invert" src="install.svg" alt=""
-                        style="height: 20px; width:20px; margin-top: 15px; ">
-                    Install app</button>
+                <h2>Premium</h2>
+                <h2>Support</h2>
+                <h2>Download</h2>
+                <span class="divider">|</span>
+                <div class="install hover-black">
+                    <button class="install bg-black">
+                        <img class="invert" src="icons/install.svg" alt=""
+                            style="height: 20px; width:20px; margin-top: 15px; ">
+                        Install app</button>
+                </div>
+                <button class="signup bg-black hover-black">Sign Up</button>
+                <button class="login allbtnwhite hover-white">Log in</button>
             </div>
-            <button class="signup bg-black hover-black">Sign Up</button>
-            <button class="login allbtnwhite hover-white">Log in</button>
         </div>
-    </div>
-    <div class="container flex">
-        <div class="left bg-darkgray">
-            <div class="library">
-                <h2>Your Library</h2>
-                <button class="create allbtngrey hover-black">+ Create</button>
-            </div>
-            <div class="slidebar bg-darkgray">
-                <div class="songlibcont">
-                    <h3>Your songs</h3>
-                    <div class="songlib libcard bg-gray">
-                        <div class="songcard ">
-                            <img class="music" src="music.svg" alt="">
-                            <div class="song-info" >
-                                <h4>song name</h4>
-                                <p>artist name</p>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="left bg-darkgray">
+                <button class="closebtn">
+                    <img class="invert" src="icons/cross.svg" alt="">
+                </button>
+                <div class="library">
+                    <h2>Your Library</h2>
+                    <button class="create allbtngrey hover-black">+ Create</button>
+                </div>
+                <div class="slidebar bg-darkgray">
+                    <div class="songlibcont">
+                        <h3>Your songs</h3>
+                        <div class="songlib libcard bg-gray">
+                            <div class="songcard ">
+                                <img class="music" src="icons/music.svg" alt="">
+                                <div class="song-info">
+                                    <h4>song name</h4>
+                                    <p>artist name</p>
+                                </div>
+                                <button class="songplay hover-white">
+                                    <img src="icons/playsong.svg" alt="">
+                                </button>
+
                             </div>
-                            <button class="songplay hover-white">
-                                <img src="playsong.svg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="createplaylist libcard bg-gray">
+                        <h3>Create your first playlist</h3>
+                        <p>It's easy, we'll help you</p>
+                        <button class="createP allbtnwhite hover-white">Create playlist</button>
+                    </div>
+                    <div class="browsepodcast libcard bg-gray">
+                        <h3>Let's find some podcasts to follow</h3>
+                        <p>We'll keep you updated on new episodes</p>
+                        <button class="browse allbtnwhite hover-white">Browse podcasts</button>
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <a href="https://www.spotify.com/in-en/legal/">Legal</a>
+                    <a href="https://www.spotify.com/in-en/safetyandprivacy/">Safety &amp; Privacy Center</a>
+                    <a href="https://www.spotify.com/in-en/legal/privacy-policy/">Privacy Policy</a>
+                    <a href="https://www.spotify.com/in-en/legal/cookies-policy/">Cookies</a>
+                    <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3">About Ads</a>
+                    <a href="https://www.spotify.com/in-en/accessibility/">Accessibility</a>
+                    <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank"
+                        rel="noopener"><span>Cookies</span></a>
+                </div>
+                <div class="lang">
+                    <button class="langbtn allbtngrey"
+                        style="font-size: 15px; border: 1px solid white; width: fit-content;">🌐 English</button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="pcontainer">
+                    <div class="header">
+                        <h2 class="tt hover-underline">Trending songs</h2>
+                        <h3 class="hh hover-underline">Show all</h3>
+                    </div>
+                    <div class="card-container">
+                        <div class="card ">
+                            <img src="https://i.scdn.co/image/ab67616d00001e029aa819fdf84c78fc1976391d" alt="">
+                            <button class="playbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
+                                    color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z">
+                                    </path>
+                                </svg>
                             </button>
-           
+                            <h2 style="font-weight: bold;">KALYANI (with Shreya Ghoshal) - Remix</h2>
+                            <h2>ARJN,KDS,FIFTY4,Shreya Ghoshal</h2>
+                        </div>
+                        <div class="card">
+                            <img src="https://i.scdn.co/image/ab67616d00001e0288c28c6ce03addf74c775bca" alt="">
+                            <button class="playbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
+                                    color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <h2 style="font-weight: bold;">Ve Junoon(From "Awarapan 2")</h2>
+                            <h2>Mithoon,Sayeed Quadri,Subodhh Sharma</h2>
+                        </div>
+                        <div class="card">
+                            <img src="https://i.scdn.co/image/ab67616d00001e02a81b61a834db74333eb53a2e" alt="">
+                            <button class="playbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
+                                    color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <h2 style="font-weight: bold;">Taare</h2>
+                            <h2>Farak,10A,saswat Balan</h2>
+                        </div>
+                        <div class="card">
+                            <img src="https://i.scdn.co/image/ab67616d00001e027dc59beceb3a73ccdcecf502" alt="">
+                            <button class="playbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
+                                    color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <h2 style="font-weight: bold;">Sohniye</h2>
+                            <h2>Shubh</h2>
                         </div>
                     </div>
-
                 </div>
-                <div class="createplaylist libcard bg-gray">
-                    <h3>Create your first playlist</h3>
-                    <p>It's easy, we'll help you</p>
-                    <button class="createP allbtnwhite hover-white">Create playlist</button>
+                <div class="playbar bg-darkgray">
+                    <div class="namendbtn">
+                        <div class="songinfo"></div>
+                        <div class="playbarbttn">
+                            <button class="prevsong playbttn hover-white">
+                                <img src="icons/prevsong.svg" alt="">
+                            </button>
+                            <button class="play playbttn hover-white">
+                                <img class="playimg" src="icons/playsong.svg" alt="">
+                            </button>
+                            <button class="nextsong playbttn hover-white">
+                                <img src="icons/nextsong.svg" alt="">
+                            </button>
+                        </div>
+                        <div class="songtime">00:00/00:00</div>
+                    </div>
+                    <div class="seekbar">
+                        <div class="circle"></div>
+                    </div>
                 </div>
-                <div class="browsepodcast libcard bg-gray">
-                    <h3>Let's find some podcasts to follow</h3>
-                    <p>We'll keep you updated on new episodes</p>
-                    <button class="browse allbtnwhite hover-white">Browse podcasts</button>
-
-                </div>
-            </div>
-            <div class="footer">
-                <a href="https://www.spotify.com/in-en/legal/">Legal</a>
-                <a href="https://www.spotify.com/in-en/safetyandprivacy/">Safety &amp; Privacy Center</a>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/">Privacy Policy</a>
-                <a href="https://www.spotify.com/in-en/legal/cookies-policy/">Cookies</a>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3">About Ads</a>
-                <a href="https://www.spotify.com/in-en/accessibility/">Accessibility</a>
-                <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener"><span>Cookies</span></a>
-            </div>
-            <div class="lang">
-                    <button class="langbtn allbtngrey" style="font-size: 15px; border: 1px solid white; width: fit-content;">🌐 English</button>
             </div>
         </div>
-        <div class="right bg-darkgray">
-            <div class="pcontainer">
-                 <div class="header">
-                    <h2 class="tt hover-underline">Trending songs</h2>
-                    <h3 class="hh hover-underline">Show all</h3>
-                </div>
-                <div class="card-container">
-                    <div class="card ">
-                        <img src="https://i.scdn.co/image/ab67616d00001e029aa819fdf84c78fc1976391d" alt="">
-                        <button class="playbtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-                            <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"></path>
-                            </svg>
-                        </button>
-                        <h2 style="font-weight: bold;">KALYANI (with Shreya Ghoshal) - Remix</h2>
-                        <h2>ARJN,KDS,FIFTY4,Shreya Ghoshal</h2>
-                    </div>
-                    <div class="card">
-                        <img src="https://i.scdn.co/image/ab67616d00001e0288c28c6ce03addf74c775bca" alt="">
-                        <button class="playbtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-                            <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"></path>
-                            </svg>
-                        </button>
-                        <h2 style="font-weight: bold;">Ve Junoon(From "Awarapan 2")</h2>
-                        <h2>Mithoon,Sayeed Quadri,Subodhh Sharma</h2>
-                    </div>
-                    <div class="card">
-                        <img src="https://i.scdn.co/image/ab67616d00001e02a81b61a834db74333eb53a2e" alt="">
-                        <button class="playbtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-                            <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"></path>
-                            </svg>
-                        </button>
-                        <h2 style="font-weight: bold;">Taare</h2>
-                        <h2>Farak,10A,saswat Balan</h2>
-                    </div>
-                    <div class="card">
-                        <img <img src="https://i.scdn.co/image/ab67616d00001e027dc59beceb3a73ccdcecf502" alt="">
-                        <button class="playbtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="currentColor" fill="#000000" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-                            <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"></path>
-                            </svg>
-                        </button>
-                        <h2 style="font-weight: bold;">Sohniye</h2>
-                        <h2>Shubh</h2>
-                </div>
-            <div class="playbar bg-darkgray">
-                <div class="namendbtn">
-                    <div class="songinfo"></div>
-                    <div class="playbarbttn">
-                        <button class="prevsong playbttn hover-white"> 
-                            <img src="prevsong.svg" alt="">
-                        </button>
-                        <button class="play playbttn hover-white">
-                            <img class="playimg" src="pausesong.svg" alt="">
-                        </button>
-                        <button class="prevsong playbttn hover-white">
-                            <img src="nextsong.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="songtime">00:00/00:00</div>
-                </div>
-                <div class="seekbar">
-                    <div class="circle"></div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
