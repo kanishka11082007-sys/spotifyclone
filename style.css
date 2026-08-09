@@ -516,13 +516,13 @@ button{
 }
 @media (max-width:460px){
     .searchbox{
-        max-width: 200px;
+        width: 200px;
     }
     .searchbox img{
         width: 20px;
     }
     .searchboxinput{
-        width: 40px;
+        width: 80px;
         font-size: 6px;
     }
     .search{
@@ -532,17 +532,42 @@ button{
         width: 120px;
     }
     .songtime{
-        font-size: 10px;
+        font-size: 14px;
     }
     .songinfo{
-        font-size: 9px;
+        font-size: 14px;
     }
     .playbarbttn img{
         width: 20px;
     }
     .volseekbar{
+        width: 56px;
+    }
+    .playbar{
+        height: 100px;
+    }
+    .seekbar{
+        height: 5px;
+        margin-top:18px;
+    }
+    .playbttn img{
+        height: 40px;
         width: 40px;
     }
+    .play.playbttn{
+        height: 50px;
+        width: 50px;
+    }
+    .prevsong.playbttn{
+        height: 50px;
+        width: 50px;
+    }
+    .nextsong.playbttn{
+        height: 50px;
+        width: 50px;
+    }
+   
+}
 }
 .search-results {
     display: none;
