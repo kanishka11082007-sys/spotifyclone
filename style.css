@@ -198,14 +198,18 @@ a{
 
 }
 .card img{
-    width: 100%;
+    width: 150px;
+    height: 181px;
     object-fit: contain;
 }
 .card h2{
     color: white;
-    font-size: 12px;
+    font-size: 18px;
     width: 100%;
     object-fit: contain;
+}
+.card p{
+    color: white;
 }
 .card:hover{
     background-color: #181818;

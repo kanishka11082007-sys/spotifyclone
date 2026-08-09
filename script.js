@@ -5,18 +5,22 @@ let songs=[]
 // Select these BEFORE using them
 let play = document.querySelector(".play");
 let playimg = document.querySelector(".playimg");
-function playMusic(songname) {
-    currentTrack=songname
-    currentsong.src = `songs/${songname}`;
+function playMusic(songpath) {
+    currentTrack=songpath
+    currentsong.src = songpath;
     currentsong.play();
 
     playimg.src = "icons/pausesong.svg";
 
-    document.querySelector(".songinfo").innerHTML =
-        songname.replace(".mp3", "");
+    const filename = songpath.split("/").pop();
+    const cleanname = filename.replace(".mp3", "");
+
+    document.querySelector(".songinfo").innerHTML = cleanname;
 }
-async function getsongs() {
-    let a = await fetch("http://127.0.0.1:8080//songs/");
+async function getsongs(folder="") {
+    let path=folder ? `songs/${folder}/` : "songs/";
+
+    let a = await fetch(`http://127.0.0.1:8080/${path}`);
     let response = await a.text();
 
     let div = document.createElement("div");
@@ -28,13 +32,63 @@ async function getsongs() {
     for (let i = 0; i < as.length; i++) {
         const href = as[i].getAttribute("href");
 
-        if (href && href.endsWith(".mp3")) {
-            songs.push(decodeURIComponent(href.replace("./", "")));
-        }
+        if (href && href.toLowerCase().endsWith(".mp3")) {
+            const filename = decodeURIComponent(href.split("/").pop());
+            songs.push(`songs/${folder ? folder + "/" : ""}${filename}`
+    );
+}
     }
 
     return songs;
 }
+async function showplaylist(folder){
+    //get songs from slelected playlist folder
+    const playlistsong=await getsongs(folder);
+    songs=playlistsong;
+    const songlib=document.querySelector(".songlib");
+    songlib.innerHTML="";
+    for (const song of playlistsong){
+        const filename = song.split("/").pop();
+        const cleansong = filename.replace(".mp3", "");
+        const parts = cleansong.split(" - ");
+        const title=parts[0]
+        const artist=parts[1]
+        songlib.innerHTML += `
+            <div class="songcard" data-song="${song}">
+                <img class="music" src="icons/music.svg" alt="">
+
+                <div class="song-info">
+                    <h4>${title}</h4>
+                    <p>${artist}</p>
+                </div>
+
+                <button class="songplay hover-white">
+                    <img src="icons/playsong.svg" alt="">
+                </button>
+            </div>
+        `;
+    }
+    document.querySelectorAll(".songcard").forEach(card => {
+        card.addEventListener("click",()=>{
+            playMusic(card.dataset.song);
+        })
+    })
+}
+document.querySelectorAll(".card[data-playlist]").forEach(card => {
+
+    card.addEventListener("click", (e) => {
+
+        // Don't trigger playlist selection when play button is clicked
+        if (e.target.closest(".playbtn")) {
+            return;
+        }
+
+        const playlist = card.dataset.playlist;
+
+        showplaylist(playlist);
+    });
+
+});
 
 async function main(){
     //get the list of all  songs
@@ -47,8 +101,10 @@ async function main(){
 
     for (const song of songs) {
 
-    const cleanSong = song.replace(".mp3", "");
-    const parts = cleanSong.split(" - ");
+    const filename = song.split("/").pop();
+    const cleansong = filename.replace(".mp3", "");
+    const parts = cleansong.split(" - ");
+
 
     const artist = parts[1];
     const title = parts[0];
