@@ -76,15 +76,25 @@ async function showplaylist(folder){
 }
 document.querySelectorAll(".card[data-playlist]").forEach(card => {
 
-    card.addEventListener("click", (e) => {
-
-        // Don't trigger playlist selection when play button is clicked
-        if (e.target.closest(".playbtn")) {
-            return;
-        }
+    card.addEventListener("click", async (e) => {
 
         const playlist = card.dataset.playlist;
 
+        // If playlist play button was clicked
+        if (e.target.closest(".playbtn")) {
+
+            // Load the playlist
+            await showplaylist(playlist);
+
+            // Play the first song
+            if (songs.length > 0) {
+                playMusic(songs[0]);
+            }
+
+            return;
+        }
+
+        // Otherwise, just show the playlist
         showplaylist(playlist);
     });
 
