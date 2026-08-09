@@ -18,29 +18,15 @@ function playMusic(songpath) {
 
     document.querySelector(".songinfo").innerHTML = cleanname;
 }
-async function getsongs(folder="") {
-    let path=folder ? `songs/${folder}/` : "songs/";
+async function getsongs(folder = "") {
+    let response = await fetch("songs.json");
+    let songData = await response.json();
 
-    let a = await fetch(`http://127.0.0.1:8080/${path}`);
-    let response = await a.text();
+    let songs = songData[folder] || [];
 
-    let div = document.createElement("div");
-    div.innerHTML = response;
-
-    let as = div.getElementsByTagName("a");
-    let songs = [];
-
-    for (let i = 0; i < as.length; i++) {
-        const href = as[i].getAttribute("href");
-
-        if (href && href.toLowerCase().endsWith(".mp3")) {
-            const filename = decodeURIComponent(href.split("/").pop());
-            songs.push(`songs/${folder ? folder + "/" : ""}${filename}`
+    return songs.map(song =>
+        `songs/${folder ? folder + "/" : ""}${encodeURIComponent(song)}`
     );
-}
-    }
-
-    return songs;
 }
 async function showplaylist(folder){
     //get songs from slelected playlist folder
