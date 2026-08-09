@@ -1,4 +1,3 @@
-console.log("hieeeee")
 let currentsong = new Audio();
 let currentTrack=""
 let songs=[]
@@ -25,7 +24,7 @@ async function getsongs(folder = "") {
     let songs = songData[folder] || [];
 
     return songs.map(song =>
-        `songs/${folder ? folder + "/" : ""}${encodeURIComponent(song)}`
+        `songs/${folder ? folder + "/" : ""}${song}`
     );
 }
 async function showplaylist(folder){
@@ -39,7 +38,7 @@ async function showplaylist(folder){
         const cleansong = filename.replace(".mp3", "");
         const parts = cleansong.split(" - ");
         const title=parts[0]
-        const artist=parts[1]
+        const artist=parts[1] || "";
         songlib.innerHTML += `
             <div class="songcard" data-song="${song}">
                 <img class="music" src="icons/music.svg" alt="">
