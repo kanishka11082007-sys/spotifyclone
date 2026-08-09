@@ -2,6 +2,7 @@ console.log("hieeeee")
 let currentsong = new Audio();
 let currentTrack=""
 let songs=[]
+let allsongs=[]
 // Select these BEFORE using them
 let play = document.querySelector(".play");
 let playimg = document.querySelector(".playimg");
@@ -102,7 +103,13 @@ document.querySelectorAll(".card[data-playlist]").forEach(card => {
 
 async function main(){
     //get the list of all  songs
-     songs= await getsongs()
+    songs= await getsongs()
+    allsongs=[...songs]
+    const playlists=["jazz","love","pop","bollywood"]
+    for (const playlist of playlists){
+        const playlistsong=await getsongs(playlist)
+        allsongs.push(...playlistsong)
+    }
     console.log(songs) 
     
     //show all the songs in library
@@ -142,6 +149,44 @@ async function main(){
 
 }
 main()
+
+const search=document.querySelector(".search");
+const searchresults = document.querySelector(".search-results");
+search.addEventListener("input", ()=>{
+    const query=search.value.toLowerCase();
+    searchresults.innerHTML = "";
+    if (query === "") {
+        searchresults.style.display = "none";
+        return;
+    }
+    searchresults.style.display = "block";
+    const results =allsongs.filter(song=>{
+        const filename=song.split("/").pop();
+        const cleanname=filename.replace(".mp3","");
+        return cleanname.toLowerCase().includes(query);
+    })
+    for (const song of results){
+        const filename = song.split("/").pop();
+        const cleanname = filename.replace(".mp3", "");
+        const parts = cleanname.split(" - ");
+        const title = parts[0];
+        const artist = parts[1] || "";
+        searchresults.innerHTML += `
+        <div class="search-result" data-song="${song}">
+            <div class="song-info">
+                <h4>${title}</h4>
+                <p>${artist}</p>
+            </div>
+        </div>`;
+    }
+    document.querySelectorAll(".search-result").forEach(result => {
+    result.addEventListener("click", () => {
+        playMusic(result.dataset.song);
+    });
+});
+
+})
+
 //to play and pause the image
 play.addEventListener("click", () => {
 

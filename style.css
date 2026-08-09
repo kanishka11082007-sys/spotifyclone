@@ -36,6 +36,11 @@ body{
     padding: 3px;
     width: 100%;
     max-width: 350px;
+
+}
+.search-container {
+    position: relative;
+    z-index: 1001;
 }
 .searchbox img{
     width: 30px;
@@ -538,4 +543,17 @@ button{
     .volseekbar{
         width: 40px;
     }
+}
+.search-results {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #282828;
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 1000;
+    overflow-y: scroll;
+ 
 }
