@@ -4,6 +4,14 @@ A responsive Spotify-inspired music player built using **HTML, CSS, and JavaScri
 
 This project is my first frontend development project, created to practice building a real-world web interface and adding interactive functionality using JavaScript.
 
+# Spotify Clone 🎵
+
+A responsive Spotify-inspired music player built using HTML, CSS, and JavaScript.
+
+## 🌐 Live Demo
+
+[🎵 View Live Website](https://spotifyclone-beta-orpin.vercel.app/)
+
 ## ✨ Features
 
 * 🎵 Play and pause songs
